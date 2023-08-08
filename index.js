@@ -1,2 +1,2 @@
 const socket = io();
-socket.emit("message", "Hola desde el cliente");
+socket.emit("message", "Hola, este mensaje proviene del cliente!");

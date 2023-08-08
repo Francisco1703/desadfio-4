@@ -5,28 +5,33 @@ import viewsRouter from "./src/routes/views.routes.js";
 import { Server } from "socket.io";
 
 const app = express();
-const port = 8000;
+const port = 8080;
 
 const httpServer = app.listen(port, () => {
-  console.log("Servidor escuchando en puerto " + port);
+  console.log(`Servidor conectado al puerto: http://localhost:${port}`);
 });
 const socketServer = new Server(httpServer);
 
 app.engine("handlebars", handlebars.engine());
 app.set("views", __dirname + "/views");
 app.set("view engine", "handlebars");
-app.use(express.static(__dirname + "/public"));
 
+app.use(express.static(__dirname + "/public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use("/", viewsRouter);
 app.use("/", viewsRouter);
 
+app.set("socketServer", socketServer);
+
 socketServer.on("connection", (socket) => {
-  console.log("Un cliente se ha conectado");
+  console.log("Un cliente se ha conectado!");
+
   socket.on("message", (data) => {
     console.log(data);
   });
 
-  socket.emit("socket_individual", "Hola desde el cliente #1");
+  socket.on("error", (error) => {
+    console.error("Error en socket.io:", error);
+  });
 });

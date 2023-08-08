@@ -4,16 +4,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Productos</title>
+    <title>Products List</title>
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: center;
+
+        }
+
+        .card {
+            width: 300px;
+            margin: 10px;
+            border-radius: 15px;
+            background: linear-gradient(to bottom, rgb(146, 141, 141), rgb(194, 32, 32));
+            transition: all 0.5s;
+        }
+
+        .card:hover {
+            transform: scale(0.95);
+            cursor: pointer;
+            box-shadow: -5px 5px 10px 10px grey;
+        }
+    </style>
 </head>
 
-<body>
-    <h1>Lista de Productos</h1>
-    <ul>
+
+<body style="background-color: beige;">
+    <h1 class="text-center p-5 bg-success mb-5 text-light fw-bolder" style="text-shadow: 5px 7px 4px black;">Products
+        List</h1>
+
+    <div class="container">
         {{#each products}}
-        <li>Nombre: {{title}} - Stock: {{stock}} - Descripción: {{description}}</li>
+        <div class="card my-5">
+            <div class="py-5" style="width: 200px; margin: 0 auto">
+                {{#each thumbnails}}
+
+                <img src=" {{this}}" alt="{{title}}" width="200">
+                {{/each}}
+            </div>
+            <div class="text-center text-light px-3 mb-3">
+                <h4 class="card-text"><span class="fw-bolder">Name</span>: {{title}} </h4>
+                <p><span class="fw-bolder fs-5">Description</span>: {{description}} </p>
+                <p><span class="fw-bolder fs-5">Price</span>: {{price}} </p>
+                <p><span class="fw-bolder fs-5">Stock</span>: {{stock}} </p>
+                <p><span class="fw-bolder fs-5">Category</span>: {{category}} </p>
+            </div>
+        </div>
         {{/each}}
-    </ul>
+    </div>
 </body>
 
 </html>

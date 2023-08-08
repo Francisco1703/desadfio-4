@@ -74,7 +74,8 @@ class ProductManager {
 
     if (pos > -1) {
       this.products.splice(pos, 1);
-      0, 1;
+      // 0, 1;
+      this.rearrangeIds();
       this.saveProducts();
       console.log("Product #" + id + " deleted!");
 
@@ -84,6 +85,12 @@ class ProductManager {
 
       return false;
     }
+  }
+
+  rearrangeIds() {
+    this.products.forEach((product, index) => {
+      product.id = index + 1;
+    });
   }
 
   getProducts() {

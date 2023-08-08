@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Francisco1703"
+    "url": "git+https://github.com/Francisco1703/desafio-4.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Francisco1703"
+    "url": "https://github.com/Francisco1703/desafio-4/issues"
   },
-  "homepage": "https://github.com/Francisco1703",
+  "homepage": "https://github.com/Francisco1703/desafio-4#readme",
   "dependencies": {
     "express": "^4.18.2",
     "express-handlebars": "^7.1.1",
